@@ -87,7 +87,7 @@ class Task
     @completed_status = completed_status
   end
 
-  # allows the description to be called as a string, vestigial
+  # allows the description to be called as a string
   def to_s
     description
   end
