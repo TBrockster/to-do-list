@@ -54,7 +54,7 @@ class List
   # puts all tasks in @all_tasks array, inlcuding number and status
   def show_tasks
     puts 'To Do:'
-    all_tasks.each { |task| puts "#{all_tasks.index(task) + 1}) #{task.to_machine}" } # rubocop:disable Metrics/LineLength
+    all_tasks.each { |task| puts "#{all_tasks.index(task) + 1}) #{task.to_machine}" }
   end
 
   # writes the @all_tasks array to a new file
@@ -111,13 +111,13 @@ class Task
   private
 
   def represent_status
-    "#{completed? ? '[X]' : '[ ]'}" # rubocop:disable Style/UnneededInterpolation, Metrics/LineLength
+    "#{completed? ? '[X]' : '[ ]'}"
   end
 end
 
 if $PROGRAM_NAME == __FILE__ # program runner
-  include Menu # rubocop:disable Style/MixinUsage
-  include Promptable # rubocop:disable Style/MixinUsage
+  include Menu
+  include Promptable
   my_todo_list = List.new
   until (user_input = prompt(show)).downcase.include?('q')
     case user_input
@@ -127,7 +127,7 @@ if $PROGRAM_NAME == __FILE__ # program runner
       my_todo_list.show_tasks
     when '3'
       my_todo_list.show_tasks
-      my_todo_list.update_task(prompt('Please enter task number to update'), Task.new(prompt('Please enter updated task'))) # rubocop:disable Metrics/LineLength
+      my_todo_list.update_task(prompt('Please enter task number to update'), Task.new(prompt('Please enter updated task')))
     when '4'
       my_todo_list.show_tasks
       my_todo_list.delete_task(prompt('Please enter the task number to delete'))
@@ -136,13 +136,13 @@ if $PROGRAM_NAME == __FILE__ # program runner
     when '6'
       begin
         my_todo_list.read_from_file(prompt('Please enter File Name'))
-      rescue Errno::ENOENT # rubocop:disable Metrics/BlockNesting
+      rescue Errno::ENOENT
         puts 'File name not found, please verify your file name
         and path.'
       end
     when '7'
       my_todo_list.show_tasks
-      my_todo_list.toggle(prompt('Please enter the number of the task you wish to toggle')) # rubocop:disable Metrics/LineLength
+      my_todo_list.toggle(prompt('Please enter the number of the task you wish to toggle'))
       my_todo_list.show_tasks
     else
       puts 'Sorry, I did not understand'
